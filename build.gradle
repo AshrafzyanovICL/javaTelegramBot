@@ -21,9 +21,9 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    compile group: 'org.telegram', name: 'telegrambots', version: '4.6'
+    compile group: 'org.telegram', name: 'telegrambotsextensions', version: '4.6'
 }
 
 // Define the main class for the application
-mainClassName = 'ru.icl.telegram.bot.App'
+mainClassName = 'ru.icl.telegram.bot.StartPoint'
