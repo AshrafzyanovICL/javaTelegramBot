@@ -4,4 +4,4 @@ language: java
 jdk:
   - openjdk8
 before_install:
-  - ls -la
+  - chmod +x gradlew
