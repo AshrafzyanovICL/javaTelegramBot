@@ -9,4 +9,4 @@ before_install:
 deploy:
   provider: heroku
   api_key: fa131176-b8c4-4e6b-b44e-bf3fd293e859
-  app-name: telegram-bot
+  app: icl-telegram-bot
