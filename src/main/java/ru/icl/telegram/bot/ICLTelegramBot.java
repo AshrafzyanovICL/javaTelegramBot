@@ -1,5 +1,7 @@
 package ru.icl.telegram.bot;
 
+import java.util.ResourceBundle;
+
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -7,7 +9,13 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import ru.icl.telegram.bot.command.StartCommand;
+import ru.icl.telegram.bot.messagehandler.MessageHandler;
+import ru.icl.telegram.bot.messagehandler.impl.MessageHandlerImpl;
+
 public class ICLTelegramBot extends TelegramLongPollingCommandBot {
+	
+	private MessageHandler messageHandler = new MessageHandlerImpl();
 	
 	public ICLTelegramBot(DefaultBotOptions defaultBotOptions) {
 		super(defaultBotOptions);
@@ -20,11 +28,10 @@ public class ICLTelegramBot extends TelegramLongPollingCommandBot {
 			Message message = update.getMessage();
 			SendMessage sendMessage = new SendMessage();
 			sendMessage.setChatId(message.getChatId());
-			sendMessage.setText("Иди нахуй!");
+			sendMessage.setText(messageHandler.handleMassge(message));
 			try {
 				execute(sendMessage);
 			} catch (TelegramApiException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -33,7 +40,7 @@ public class ICLTelegramBot extends TelegramLongPollingCommandBot {
 
 	@Override
 	public String getBotToken() {
-		return "977486525:AAEIcz4gUltMW57XNIuE2QDrw_dbLTT3Pp8";
+		return ResourceBundle.getBundle("api_key").getString("bot_key");
 	}
-
+	
 }

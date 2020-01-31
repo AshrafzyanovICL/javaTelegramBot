@@ -1,4 +1,4 @@
-package ru.icl.telegram.bot;
+package ru.icl.telegram.bot.command;
 
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -16,8 +16,8 @@ public class StartCommand extends BotCommand {
 	@Override
 	public void execute(AbsSender absSender, User user, Chat chat, String[] arguments) {
 		SendMessage message = new SendMessage();
-		message.setChatId(chat.getId().toString());
-		message.setText("Иди нахуй");
+		message.setChatId(chat.getId());
+		message.setText("Добрый день!");
 		try {
 			absSender.execute(message);
 		} catch (TelegramApiException e) {
