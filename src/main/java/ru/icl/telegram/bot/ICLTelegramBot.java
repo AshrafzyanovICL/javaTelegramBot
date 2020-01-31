@@ -20,7 +20,7 @@ public class ICLTelegramBot extends TelegramLongPollingCommandBot {
 			Message message = update.getMessage();
 			SendMessage sendMessage = new SendMessage();
 			sendMessage.setChatId(message.getChatId());
-			sendMessage.setText("»‰Ë Ì‡ıÛÈ!");
+			sendMessage.setText("–ò–¥–∏ –Ω–∞—Ö—É–π!");
 			try {
 				execute(sendMessage);
 			} catch (TelegramApiException e) {

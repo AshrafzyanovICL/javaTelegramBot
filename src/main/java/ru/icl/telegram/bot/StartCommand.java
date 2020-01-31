@@ -17,7 +17,7 @@ public class StartCommand extends BotCommand {
 	public void execute(AbsSender absSender, User user, Chat chat, String[] arguments) {
 		SendMessage message = new SendMessage();
 		message.setChatId(chat.getId().toString());
-		message.setText("»‰Ë Ì‡ıÛÈ");
+		message.setText("–ò–¥–∏ –Ω–∞—Ö—É–π");
 		try {
 			absSender.execute(message);
 		} catch (TelegramApiException e) {
