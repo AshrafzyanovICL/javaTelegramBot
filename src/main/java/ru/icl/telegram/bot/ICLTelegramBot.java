@@ -40,7 +40,11 @@ public class ICLTelegramBot extends TelegramLongPollingCommandBot {
 
 	@Override
 	public String getBotToken() {
-		return ResourceBundle.getBundle("api_key").getString("bot_key");
+		String value = ResourceBundle.getBundle("api_key").getString("bot_key");
+		if (value.startsWith("$")) {
+			value = System.getenv(value.substring(1));
+		}
+		return value;
 	}
 	
 }

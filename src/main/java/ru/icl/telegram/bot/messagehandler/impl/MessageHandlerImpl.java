@@ -8,7 +8,7 @@ public class MessageHandlerImpl implements MessageHandler {
 
 	@Override
 	public String handleMassge(Message message) {
-		return "Добрый день. Ваш телефон: " + message.getContact().getPhoneNumber();
+		return "Добрый день. Ваш телефон: " + message.getChatId();
 	}
 
 }
