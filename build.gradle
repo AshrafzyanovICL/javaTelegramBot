@@ -6,17 +6,9 @@
  * User Manual available at https://docs.gradle.org/5.4.1/userguide/tutorial_java_projects.html
  */
 
-plugins {
-    // Apply the java plugin to add support for Java
-    id 'java'
-
-    // Apply the application plugin to add support for building an application
-    id 'application'
-}
+apply plugin: 'java'
 
 repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
 
@@ -25,5 +17,12 @@ dependencies {
     compile group: 'org.telegram', name: 'telegrambotsextensions', version: '4.6'
 }
 
-// Define the main class for the application
-mainClassName = 'ru.icl.telegram.bot.StartPoint'
+jar {
+	manifest {
+		attributes "Main-Class": "ru.icl.telegram.bot.StartPoint"
+	}
+	
+	from {
+		configurations.compile.collect {it.isDirectory() ? it : zipTree(it)}
+	}
+}
