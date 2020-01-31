@@ -16,6 +16,7 @@ public class StartPoint {
 			TelegramBotsApi botsApi = new TelegramBotsApi();
 			DefaultBotOptions defaultBotOptions = ApiContext.getInstance(DefaultBotOptions.class);
 			botsApi.registerBot(new ICLTelegramBot(defaultBotOptions));
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         }

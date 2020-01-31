@@ -21,7 +21,6 @@ public class StartCommand extends BotCommand {
 		try {
 			absSender.execute(message);
 		} catch (TelegramApiException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
