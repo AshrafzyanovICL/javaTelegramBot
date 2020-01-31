@@ -10,7 +10,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 public class StartCommand extends BotCommand {
 
 	public StartCommand() {
-		super("start", "");
+		super("start", "Start command");
 	}
 
 	@Override
