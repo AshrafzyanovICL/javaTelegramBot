@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -19,7 +20,7 @@ public class ICLTelegramBot extends TelegramLongPollingCommandBot {
 	
 	public ICLTelegramBot(DefaultBotOptions defaultBotOptions) {
 		super(defaultBotOptions);
-		register(new StartCommand());
+		register(new StartCommand()); 
 	}
 
 	@Override
@@ -29,8 +30,16 @@ public class ICLTelegramBot extends TelegramLongPollingCommandBot {
 			SendMessage sendMessage = new SendMessage();
 			sendMessage.setChatId(message.getChatId());
 			sendMessage.setText(messageHandler.handleMassge(message));
+			SendPhoto photo = new SendPhoto();
+			photo.setPhoto("someimage", getClass().getResourceAsStream("/image.jpg"));
+			photo.setChatId(message.getChatId());
+
 			try {
-				execute(sendMessage);
+				if (message.getText().equals("Photo")) {
+					execute(photo);
+				} else {
+					execute(sendMessage);
+				}
 			} catch (TelegramApiException e) {
 				e.printStackTrace();
 			}
