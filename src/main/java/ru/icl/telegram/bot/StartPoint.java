@@ -3,8 +3,19 @@
  */
 package ru.icl.telegram.bot;
 
+import org.telegram.telegrambots.ApiContextInitializer;
+import org.telegram.telegrambots.meta.TelegramBotsApi;
+
 public class StartPoint {
 
     public static void main(String[] args) {
-    }
+		try {
+			ApiContextInitializer.init();
+			TelegramBotsApi botsApi = new TelegramBotsApi();
+			botsApi.registerBot(new ICLTelegramBot());
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
 }
