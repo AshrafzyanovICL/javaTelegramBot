@@ -3,6 +3,7 @@ package ru.icl.telegram.bot;
 import java.util.ResourceBundle;
 
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
+import org.telegram.telegrambots.extensions.bots.commandbot.commands.helpCommand.HelpCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -20,6 +21,7 @@ public class ICLTelegramBot extends TelegramLongPollingCommandBot {
 	public ICLTelegramBot() {
 		register(new StartCommand());
 		register(new ListCommand(this));
+		register(new HelpCommand());
 	}
 
 	@Override
