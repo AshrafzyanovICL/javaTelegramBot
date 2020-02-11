@@ -30,11 +30,5 @@ public class StartCommand extends BotCommand {
 		return "Test";
 	}
 
-	@Override
-	public void processMessage(AbsSender absSender, Message message, String[] arguments) {
-		// TODO Auto-generated method stub
-		super.processMessage(absSender, message, arguments);
-	}
-
 	
 }

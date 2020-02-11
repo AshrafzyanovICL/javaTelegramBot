@@ -47,6 +47,22 @@ public class ICLTelegramBot extends TelegramLongPollingCommandBot {
 		}
 		
 	}
+	
+	
+
+	@Override
+	protected void processInvalidCommandUpdate(Update update) {
+		Message message = update.getMessage();
+		SendMessage sendMessage = new SendMessage();
+		sendMessage.setChatId(message.getChatId());
+		sendMessage.setText("Ошибка команды");
+		try {
+			execute(sendMessage);
+		} catch (TelegramApiException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public String getBotToken() {
