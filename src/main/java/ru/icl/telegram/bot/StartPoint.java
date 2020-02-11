@@ -3,22 +3,8 @@
  */
 package ru.icl.telegram.bot;
 
-import org.telegram.telegrambots.ApiContextInitializer;
-import org.telegram.telegrambots.bots.DefaultBotOptions;
-import org.telegram.telegrambots.meta.ApiContext;
-import org.telegram.telegrambots.meta.TelegramBotsApi;
-
 public class StartPoint {
 
     public static void main(String[] args) {
-        try {
-            ApiContextInitializer.init();
-			TelegramBotsApi botsApi = new TelegramBotsApi();
-			DefaultBotOptions defaultBotOptions = ApiContext.getInstance(DefaultBotOptions.class);
-			botsApi.registerBot(new ICLTelegramBot(defaultBotOptions));
-            new PortListener().start(Integer.parseInt(System.getProperty("server.port")));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
     }
 }

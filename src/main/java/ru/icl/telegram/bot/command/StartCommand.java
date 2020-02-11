@@ -1,6 +1,5 @@
 package ru.icl.telegram.bot.command;
 
-import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
@@ -23,6 +22,11 @@ public class StartCommand extends BotCommand {
 		} catch (TelegramApiException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public String getCommandCategory() {
+		return "Test";
 	}
 
 }
