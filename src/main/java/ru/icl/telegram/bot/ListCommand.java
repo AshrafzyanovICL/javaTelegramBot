@@ -27,7 +27,7 @@ public class ListCommand extends BotCommand {
 	@Override
 	public void execute(AbsSender absSender, User user, Chat chat, String[] arguments) {
 		Map<String, List<IBotCommand>> res = new HashMap<>();
-		commandRegistry.getRegisteredCommands().stream().map(e -> ru.icl.telegram.bot.command.BotCommand.class.cast(e)).forEach(e -> {
+		commandRegistry.getRegisteredCommands().stream().filter(e -> e instanceof ru.icl.telegram.bot.command.BotCommand).map(e -> ru.icl.telegram.bot.command.BotCommand.class.cast(e)).forEach(e -> {
 			List<IBotCommand> botCommands = res.get(e.getCommandCategory());
 			if (botCommands == null) {
 				botCommands =  new ArrayList<>();
